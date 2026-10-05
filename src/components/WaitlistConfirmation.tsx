@@ -39,10 +39,9 @@ export function WaitlistConfirmation({ reference, onContinueShopping }: Waitlist
                     <BellRing className="w-5 h-5 text-neutral-800" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">First access</p>
+                    <p className="font-medium text-gray-900">Drop notification</p>
                     <p className="text-sm text-gray-600">
-                      When the first drop opens, waitlist members hear before
-                      anyone else.
+                      We will email you when the first drop opens.
                     </p>
                   </div>
                 </div>

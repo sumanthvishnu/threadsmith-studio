@@ -85,8 +85,7 @@ export function Checkout({ onBack, onOrderComplete }: CheckoutProps) {
                 <CardContent className="space-y-4">
                   <p className="text-sm text-gray-600">
                     Threadsmith is pre-launch. Leave your details and we will
-                    email you the moment the first drop opens. Waitlist members
-                    get first access before the public release.
+                    email you when the first drop opens.
                   </p>
 
                   <div>
@@ -118,8 +117,11 @@ export function Checkout({ onBack, onOrderComplete }: CheckoutProps) {
                       id="phone"
                       type="tel"
                       placeholder="+91 98XXX XXXXX"
+                      pattern="(\+91[\s-]?)?[6-9][0-9]{9}"
+                      title="10-digit Indian mobile number, optionally starting with +91"
                       value={entry.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
+                      required
                     />
                   </div>
 
