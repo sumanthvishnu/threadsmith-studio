@@ -2,12 +2,20 @@ export interface Product {
   id: string;
   name: string;
   description: string;
+  /** Price in INR (whole rupees) */
   price: number;
   image: string;
   category: string;
   sizes: string[];
   colors: string[];
-  printfulProductId?: string;
+  /** Fabric weight story, e.g. "~260 GSM combed cotton (target)" */
+  gsm: string;
+  /** Decoration type, e.g. "High-density graphic print" */
+  decoration: string;
+  /** Fit description, e.g. "Oversized, drop-shoulder, unisex" */
+  fit: string;
+  /** Where this product honestly stands today */
+  status: 'in-development' | 'concept';
 }
 
 export interface CartItem {
@@ -17,41 +25,21 @@ export interface CartItem {
   color: string;
 }
 
-export interface Order {
-  id: string;
-  items: CartItem[];
-  total: number;
-  customer: CustomerInfo;
-  status: 'pending' | 'paid' | 'processing' | 'shipped' | 'delivered';
-  createdAt: string;
-  printfulOrderId?: string;
-}
-
-export interface CustomerInfo {
+/**
+ * Pre-launch waitlist entry. No payment, address, or order data is
+ * collected until the store actually goes live.
+ */
+export interface WaitlistEntry {
+  name: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  address: string;
+  phone: string;
   city: string;
-  state: string;
-  zipCode: string;
-  country: string;
+  pinCode: string;
 }
 
-export interface PrintfulItem {
-  sync_variant_id: number;
-  quantity: number;
-}
-
-export interface PrintfulOrderPayload {
-  recipient: {
-    name: string;
-    address1: string;
-    city: string;
-    state_code: string;
-    country_code: string;
-    zip: string;
-    email: string;
-  };
-  items: PrintfulItem[];
+export interface WaitlistConfirmation {
+  reference: string;
+  entry: WaitlistEntry;
+  items: CartItem[];
+  createdAt: string;
 }
