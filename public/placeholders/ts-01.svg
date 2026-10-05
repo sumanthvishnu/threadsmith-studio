@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-  <rect width="1000" height="1000" fill="#0b0b0b"/>
-  <path d="M 440 180 L 360 205 L 262 252 L 182 420 L 305 472 L 345 415 L 345 830 L 655 830 L 655 415 L 695 472 L 818 420 L 738 252 L 640 205 L 560 180 Q 500 246 440 180 Z" fill="#161616" stroke="#2e2e2e" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M 440 180 Q 500 246 560 180" fill="none" stroke="#3a3a3a" stroke-width="6" stroke-linecap="round"/>
-  <rect x="380" y="330" width="240" height="180" fill="none" stroke="#333333" stroke-width="3" stroke-dasharray="10 8" stroke-linejoin="round"/>
-
-  <text x="500" y="620" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="44" letter-spacing="6" fill="#4a4a4a">TS-01</text>
-  <text x="500" y="668" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" letter-spacing="4" fill="#3a3a3a">PLACEHOLDER - ARTWORK IN DEVELOPMENT</text>
-</svg>
