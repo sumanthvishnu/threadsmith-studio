@@ -59,7 +59,7 @@ export function About() {
               Threadsmith is a Chennai-based founder brand. We are sampling
               cloth and decoration with garment manufacturers right now, and
               the first drop opens only when the quality is right. Until then,
-              this site shows honest placeholders and a waitlist, nothing more.
+              this site shows honest placeholders, nothing more.
             </p>
           </div>
         </div>
@@ -98,8 +98,9 @@ export function About() {
             countdown timer here.
           </p>
           <p className="text-gray-600 leading-relaxed">
-            If you want to know the moment the first drop opens, add a tee to
-            your waitlist cart and leave your email. That is the whole deal.
+            The drop is not open yet, so this site takes no orders and no
+            payments. When the tees are real and photographed, they will appear
+            here first.
           </p>
         </div>
       </section>

@@ -1,28 +1,17 @@
-import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Check } from 'lucide-react';
 import type { Product } from '@/types';
-import { useCart } from '@/hooks/useCart';
 import { formatINR } from '@/data/products';
 
 interface ProductCardProps {
   product: Product;
 }
 
+/**
+ * Browse-only product card. The drop is not open, so there is no cart,
+ * no size picker state, and no call to action beyond honest information.
+ */
 export function ProductCard({ product }: ProductCardProps) {
-  const { addToCart } = useCart();
-  const [selectedSize, setSelectedSize] = useState(product.sizes[1]); // Default to M
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [addedToCart, setAddedToCart] = useState(false);
-
-  const handleAddToCart = () => {
-    addToCart(product, selectedSize, selectedColor);
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000);
-  };
-
   return (
     <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Image Container */}
@@ -53,73 +42,17 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-500 mb-4 line-clamp-2">{product.description}</p>
+        <p className="text-sm text-gray-500 mb-4 line-clamp-3">{product.description}</p>
 
-        {/* Size Selection */}
-        <div className="mb-3">
-          <label className="text-xs font-medium text-gray-500 mb-2 block">Size</label>
-          <div className="flex gap-2 flex-wrap">
-            {product.sizes.map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={`min-w-8 h-8 px-2 text-xs font-medium rounded-md transition-colors ${
-                  selectedSize === size
-                    ? 'bg-neutral-900 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Color Selection */}
-        <div className="mb-4">
-          <label className="text-xs font-medium text-gray-500 mb-2 block">Colour</label>
-          <div className="flex gap-2">
-            {product.colors.map((color) => (
-              <button
-                key={color}
-                onClick={() => setSelectedColor(color)}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                  selectedColor === color
-                    ? 'bg-neutral-900 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {color}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Add to Cart Button */}
-        <Button
-          className={`w-full transition-all duration-300 ${
-            addedToCart
-              ? 'bg-green-600 hover:bg-green-700'
-              : 'bg-neutral-900 hover:bg-neutral-800'
-          }`}
-          onClick={handleAddToCart}
-          disabled={addedToCart}
-        >
-          {addedToCart ? (
-            <>
-              <Check className="w-4 h-4 mr-2" />
-              Added
-            </>
-          ) : (
-            <>
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              Add to waitlist cart
-            </>
-          )}
-        </Button>
-        <p className="text-xs text-gray-400 mt-2 text-center">
-          Not on sale yet. Adding builds your waitlist selection.
+        {/* Static variant info */}
+        <p className="text-xs text-gray-500 mb-4">
+          {product.colors.join(', ')} · Sizes {product.sizes.join(' / ')}
         </p>
+
+        {/* Honest status note */}
+        <div className="border border-dashed border-gray-300 rounded-md px-3 py-2 text-center">
+          <p className="text-xs text-gray-500">Drop not open yet. No orders.</p>
+        </div>
       </CardContent>
     </Card>
   );
