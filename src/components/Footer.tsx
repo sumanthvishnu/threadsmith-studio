@@ -30,7 +30,7 @@ export function Footer({ onNavigate }: FooterProps) {
                   onClick={() => onNavigate('products')}
                   className="hover:text-white transition-colors"
                 >
-                  Shop the First Drop
+                  See the first drop
                 </button>
               </li>
               <li>

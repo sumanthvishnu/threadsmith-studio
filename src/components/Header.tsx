@@ -12,7 +12,7 @@ export function Header({ onNavigate, currentPage }: HeaderProps) {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'products', label: 'Shop' },
+    { id: 'products', label: 'Drop' },
     { id: 'about', label: 'About' },
   ];
 
