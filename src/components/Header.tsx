@@ -1,17 +1,13 @@
-import { ShoppingCart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/hooks/useCart';
 import { useState } from 'react';
 
 interface HeaderProps {
-  onCartClick: () => void;
   onNavigate: (page: 'home' | 'products' | 'about') => void;
   currentPage: string;
 }
 
-export function Header({ onCartClick, onNavigate, currentPage }: HeaderProps) {
-  const { totalItems } = useCart();
+export function Header({ onNavigate, currentPage }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -51,26 +47,8 @@ export function Header({ onCartClick, onNavigate, currentPage }: HeaderProps) {
           ))}
         </nav>
 
-        {/* Right Section */}
+        {/* Mobile Menu Button */}
         <div className="flex items-center gap-4">
-          <Button
-            variant="outline"
-            size="icon"
-            className="relative"
-            onClick={onCartClick}
-          >
-            <ShoppingCart className="w-5 h-5" />
-            {totalItems > 0 && (
-              <Badge
-                variant="destructive"
-                className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
-              >
-                {totalItems}
-              </Badge>
-            )}
-          </Button>
-
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
