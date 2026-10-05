@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Check } from 'lucide-react';
 import type { Product } from '@/types';
 import { useCart } from '@/hooks/useCart';
+import { formatINR } from '@/data/products';
 
 interface ProductCardProps {
   product: Product;
@@ -25,22 +26,30 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Image Container */}
-      <div className="relative aspect-square overflow-hidden bg-gray-100">
+      <div className="relative aspect-square overflow-hidden bg-neutral-950">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <Badge className="absolute top-3 left-3 bg-white/90 text-gray-800 hover:bg-white/90">
-          {product.category}
+          {product.status === 'concept' ? 'Concept sample' : 'In development'}
         </Badge>
       </div>
 
       <CardContent className="p-5">
         {/* Title & Price */}
-        <div className="flex justify-between items-start mb-3">
+        <div className="flex justify-between items-start mb-1">
           <h3 className="font-semibold text-gray-900 line-clamp-1">{product.name}</h3>
-          <span className="font-bold text-violet-600">${product.price}</span>
+          <span className="font-bold text-gray-900">{formatINR(product.price)}</span>
+        </div>
+        <p className="text-xs text-gray-400 mb-3">Target price</p>
+
+        {/* Fabric & decoration specs */}
+        <div className="text-xs text-gray-600 space-y-1 mb-3">
+          <p>{product.fit}</p>
+          <p>{product.gsm}</p>
+          <p>{product.decoration}</p>
         </div>
 
         {/* Description */}
@@ -49,14 +58,14 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Size Selection */}
         <div className="mb-3">
           <label className="text-xs font-medium text-gray-500 mb-2 block">Size</label>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             {product.sizes.map((size) => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(size)}
-                className={`w-8 h-8 text-xs font-medium rounded-md transition-colors ${
+                className={`min-w-8 h-8 px-2 text-xs font-medium rounded-md transition-colors ${
                   selectedSize === size
-                    ? 'bg-violet-600 text-white'
+                    ? 'bg-neutral-900 text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -68,7 +77,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Color Selection */}
         <div className="mb-4">
-          <label className="text-xs font-medium text-gray-500 mb-2 block">Color</label>
+          <label className="text-xs font-medium text-gray-500 mb-2 block">Colour</label>
           <div className="flex gap-2">
             {product.colors.map((color) => (
               <button
@@ -76,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 onClick={() => setSelectedColor(color)}
                 className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
                   selectedColor === color
-                    ? 'bg-violet-600 text-white'
+                    ? 'bg-neutral-900 text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -87,11 +96,11 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Add to Cart Button */}
-        <Button 
+        <Button
           className={`w-full transition-all duration-300 ${
-            addedToCart 
-              ? 'bg-green-600 hover:bg-green-700' 
-              : 'bg-gray-900 hover:bg-gray-800'
+            addedToCart
+              ? 'bg-green-600 hover:bg-green-700'
+              : 'bg-neutral-900 hover:bg-neutral-800'
           }`}
           onClick={handleAddToCart}
           disabled={addedToCart}
@@ -99,15 +108,18 @@ export function ProductCard({ product }: ProductCardProps) {
           {addedToCart ? (
             <>
               <Check className="w-4 h-4 mr-2" />
-              Added to Cart
+              Added
             </>
           ) : (
             <>
               <ShoppingCart className="w-4 h-4 mr-2" />
-              Add to Cart
+              Add to waitlist cart
             </>
           )}
         </Button>
+        <p className="text-xs text-gray-400 mt-2 text-center">
+          Not on sale yet. Adding builds your waitlist selection.
+        </p>
       </CardContent>
     </Card>
   );

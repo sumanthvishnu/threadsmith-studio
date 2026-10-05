@@ -5,8 +5,8 @@ import { Hero } from '@/components/Hero';
 import { ProductGrid } from '@/components/ProductGrid';
 import { CartDrawer } from '@/components/CartDrawer';
 import { Checkout } from '@/components/Checkout';
-import { OrderSuccess } from '@/components/OrderSuccess';
-import { HowItWorks } from '@/components/HowItWorks';
+import { WaitlistConfirmation } from '@/components/WaitlistConfirmation';
+import { About } from '@/components/About';
 import { Footer } from '@/components/Footer';
 import { Toaster } from '@/components/ui/sonner';
 
@@ -15,7 +15,7 @@ type Page = 'home' | 'products' | 'about' | 'checkout' | 'success';
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [cartOpen, setCartOpen] = useState(false);
-  const [completedOrderId, setCompletedOrderId] = useState<string>('');
+  const [waitlistReference, setWaitlistReference] = useState<string>('');
 
   const handleNavigate = (page: 'home' | 'products' | 'about') => {
     setCurrentPage(page);
@@ -33,8 +33,13 @@ function App() {
     window.scrollTo(0, 0);
   };
 
-  const handleOrderComplete = (orderId: string) => {
-    setCompletedOrderId(orderId);
+  const handleBackToCart = () => {
+    setCurrentPage('home');
+    setCartOpen(true);
+  };
+
+  const handleWaitlistComplete = (reference: string) => {
+    setWaitlistReference(reference);
     setCurrentPage('success');
     window.scrollTo(0, 0);
   };
@@ -49,32 +54,32 @@ function App() {
       case 'home':
         return (
           <>
-            <Hero onShopNow={handleShopNow} />
+            <Hero onShopNow={handleShopNow} onAbout={() => handleNavigate('about')} />
             <ProductGrid />
           </>
         );
       case 'products':
         return <ProductGrid />;
       case 'about':
-        return <HowItWorks />;
+        return <About />;
       case 'checkout':
         return (
           <Checkout
-            onBack={() => setCurrentPage('home')}
-            onOrderComplete={handleOrderComplete}
+            onBack={handleBackToCart}
+            onOrderComplete={handleWaitlistComplete}
           />
         );
       case 'success':
         return (
-          <OrderSuccess
-            orderId={completedOrderId}
+          <WaitlistConfirmation
+            reference={waitlistReference}
             onContinueShopping={handleContinueShopping}
           />
         );
       default:
         return (
           <>
-            <Hero onShopNow={handleShopNow} />
+            <Hero onShopNow={handleShopNow} onAbout={() => handleNavigate('about')} />
             <ProductGrid />
           </>
         );
@@ -89,12 +94,14 @@ function App() {
           onNavigate={handleNavigate}
           currentPage={currentPage}
         />
-        
+
         <main className="flex-1">
           {renderContent()}
         </main>
 
-        {currentPage !== 'checkout' && currentPage !== 'success' && <Footer />}
+        {currentPage !== 'checkout' && currentPage !== 'success' && (
+          <Footer onNavigate={handleNavigate} />
+        )}
 
         <CartDrawer
           open={cartOpen}

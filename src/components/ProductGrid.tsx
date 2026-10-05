@@ -8,16 +8,18 @@ export function ProductGrid() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Collections
+            The First Drop
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            AI-designed apparel for every passion. From developers to gamers, pet lovers to fitness enthusiasts — 
-            find your perfect design.
+            Three tees in black. Oversized, heavy, built around cloth and
+            decoration quality. Final artwork and photography are still in
+            development, so what you see here are honest placeholders, not
+            borrowed pictures.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
