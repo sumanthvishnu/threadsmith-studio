@@ -48,7 +48,7 @@ export function Hero({ onShopNow, onAbout }: HeroProps) {
             <Button
               variant="outline"
               size="lg"
-              className="border-neutral-700 text-neutral-200 hover:bg-neutral-900 hover:text-white"
+              className="bg-transparent border-neutral-700 text-neutral-200 hover:bg-neutral-900 hover:text-white"
               onClick={onAbout}
             >
               Our story
