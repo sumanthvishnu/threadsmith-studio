@@ -1,6 +1,8 @@
-import { Twitter, Instagram, Github } from 'lucide-react';
+interface FooterProps {
+  onNavigate: (page: 'home' | 'products' | 'about') => void;
+}
 
-export function Footer() {
+export function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="bg-neutral-950 text-neutral-400">
       <div className="container mx-auto px-4 py-12">
@@ -13,21 +15,10 @@ export function Footer() {
               </div>
               <span className="text-xl font-bold text-white tracking-tight">Threadsmith</span>
             </div>
-            <p className="text-neutral-500 max-w-sm mb-6">
+            <p className="text-neutral-500 max-w-sm">
               Premium oversized streetwear from Chennai, India. Heavy cotton,
               wash-fast prints, real embroidery. First drop in development.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-neutral-800 transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-neutral-800 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-neutral-900 rounded-lg flex items-center justify-center hover:bg-neutral-800 transition-colors">
-                <Github className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Links */}
@@ -35,13 +26,20 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button className="hover:text-white transition-colors">Shop the First Drop</button>
+                <button
+                  onClick={() => onNavigate('products')}
+                  className="hover:text-white transition-colors"
+                >
+                  Shop the First Drop
+                </button>
               </li>
               <li>
-                <button className="hover:text-white transition-colors">About Us</button>
-              </li>
-              <li>
-                <button className="hover:text-white transition-colors">Join the Waitlist</button>
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="hover:text-white transition-colors"
+                >
+                  About Us
+                </button>
               </li>
             </ul>
           </div>

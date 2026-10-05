@@ -33,6 +33,11 @@ function App() {
     window.scrollTo(0, 0);
   };
 
+  const handleBackToCart = () => {
+    setCurrentPage('home');
+    setCartOpen(true);
+  };
+
   const handleWaitlistComplete = (reference: string) => {
     setWaitlistReference(reference);
     setCurrentPage('success');
@@ -60,7 +65,7 @@ function App() {
       case 'checkout':
         return (
           <Checkout
-            onBack={() => setCurrentPage('home')}
+            onBack={handleBackToCart}
             onOrderComplete={handleWaitlistComplete}
           />
         );
@@ -94,7 +99,9 @@ function App() {
           {renderContent()}
         </main>
 
-        {currentPage !== 'checkout' && currentPage !== 'success' && <Footer />}
+        {currentPage !== 'checkout' && currentPage !== 'success' && (
+          <Footer onNavigate={handleNavigate} />
+        )}
 
         <CartDrawer
           open={cartOpen}
