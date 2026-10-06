@@ -1,19 +1,17 @@
 export interface Product {
   id: string;
   name: string;
+  /** The design's line, e.g. "holding onto smoke and calling it a memory" */
+  tagline: string;
+  /** What is actually on the tee */
   description: string;
-  /** Price in INR (whole rupees) */
-  price: number;
-  image: string;
+  /** Main image first, patch close-up second */
+  images: string[];
   category: string;
-  sizes: string[];
-  colors: string[];
   /** Fabric weight story, e.g. "~260 GSM combed cotton (target)" */
   gsm: string;
-  /** Decoration type, e.g. "High-density graphic print" */
+  /** Decoration type for this design */
   decoration: string;
-  /** Fit description, e.g. "Oversized, drop-shoulder, unisex" */
+  /** Fit description */
   fit: string;
-  /** Where this product honestly stands today */
-  status: 'in-development' | 'concept';
 }

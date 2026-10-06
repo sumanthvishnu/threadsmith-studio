@@ -19,7 +19,7 @@ export function About() {
       icon: ShieldCheck,
       title: 'No pretending',
       description:
-        'We do not show fake reviews, borrowed photography, or stock that does not exist. If something is a placeholder or a concept, it says so on the page.',
+        'We do not show fake reviews, borrowed photography, or stock that does not exist. If an image is a concept render, it says so on the page.',
     },
   ];
 
@@ -59,7 +59,7 @@ export function About() {
               Threadsmith is a Chennai-based founder brand. We are sampling
               cloth and decoration with garment manufacturers right now, and
               the first drop opens only when the quality is right. Until then,
-              this site shows honest placeholders, nothing more.
+              this site shows honest concept images, nothing more.
             </p>
           </div>
         </div>

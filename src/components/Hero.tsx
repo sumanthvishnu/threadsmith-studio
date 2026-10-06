@@ -9,7 +9,7 @@ interface HeroProps {
 export function Hero({ onShopNow, onAbout }: HeroProps) {
   const features = [
     { icon: Shirt, text: 'Oversized drop-shoulder fit' },
-    { icon: Layers, text: '240 to 300 GSM heavy cotton' },
+    { icon: Layers, text: 'About 260 GSM heavy cotton' },
     { icon: PenTool, text: 'Print and embroidery' },
   ];
 
@@ -31,8 +31,8 @@ export function Hero({ onShopNow, onAbout }: HeroProps) {
           <p className="text-lg md:text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
             Threadsmith is a premium oversized streetwear label from Chennai.
             Dense combed cotton, drop-shoulder fits, wash-fast prints and real
-            embroidery. We are building the first drop now, and we would rather
-            show you honest placeholders than pretend otherwise.
+            embroidery. The first drop's designs are shown here as honest
+            concept images while the samples are being made.
           </p>
 
           {/* CTA Buttons */}

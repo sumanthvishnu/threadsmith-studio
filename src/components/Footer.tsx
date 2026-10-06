@@ -49,7 +49,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-white font-semibold mb-4">Honest status</h4>
             <p className="text-sm text-neutral-500">
               Threadsmith is pre-launch. Product images on this site are
-              placeholders, and the drop is not open yet. No orders, no
+              concept renders, and the drop is not open yet. No orders, no
               payments.
             </p>
           </div>

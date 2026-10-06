@@ -3,20 +3,20 @@
 Premium oversized streetwear from Chennai, India. Heavy combed cotton tees
 with wash-fast prints and real embroidery.
 
-**Status: pre-launch.** This repo is mid-rebuild from an old demo storefront
-into the real Threadsmith brand site. The site is currently a browse-only
-brand shell with honest placeholder products. No cart, no checkout, no
+**Status: pre-launch.** The site is a browse-only brand shell showing Drop 01,
+the first drop's three designs (Smoke, Panther, David), as labelled concept
+images while the samples are being made. No prices, no cart, no checkout, no
 waitlist form, no payments. The drop is not open yet.
 
 ## What the site does today
 
-- Presents the first drop: black oversized heavy tees (print, embroidery,
-  and a print + embroidery concept), with target GSM and decoration called
-  out per product.
-- Prices in INR, targets kept under the ₹2,500 lane.
-- Every product card states "Drop not open yet. No orders."
-- Placeholder imagery is labelled as such. No fake reviews, no fake stock,
-  no shipping promises.
+- Presents Drop 01: three black oversized heavy tees built around frayed
+  canvas patches, line art, and red thread, with target GSM and decoration
+  called out per design.
+- Each design has a product page with a main image and a patch close-up.
+- Every product carries a "Drop not open yet" badge, and each image is
+  captioned "Concept images. Real photos coming with the samples."
+- No fake reviews, no fake stock, no shipping promises, no prices.
 
 ## Stack
 
@@ -33,7 +33,7 @@ npm run build
 
 ## Roadmap notes
 
-- Real artwork and product photography replace the placeholder SVGs when ready.
-- A waitlist or contact capture (e.g. a form endpoint) and payments
-  (Razorpay or similar) get wired only when the first drop is actually
-  ready, with real keys and real terms.
+- Real product photography replaces the concept images when samples land.
+- A waitlist or contact capture (e.g. a form endpoint), pricing, and
+  payments (Razorpay or similar) get wired only when the first drop is
+  actually ready, with real keys and real terms.

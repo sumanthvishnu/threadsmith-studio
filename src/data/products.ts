@@ -1,58 +1,49 @@
 import type { Product } from '@/types';
 
 /**
- * Threadsmith · First Drop (in development)
+ * Threadsmith · Drop 01 (not open yet)
  *
- * Honest placeholders for the real line: black oversized heavy tees,
- * print and embroidery. Final artwork and product photography are still
- * being developed, so images are marked placeholders on purpose.
- * Prices are targets in INR and stay under the ₹2,500 lane.
+ * The first drop's three designs, shown as concept images while the real
+ * samples are being made. Browse-only: no prices, no orders, no payments.
+ * Every piece is a black oversized drop-shoulder tee on heavy combed
+ * cotton, with a frayed canvas patch and red thread somewhere on it.
  */
 export const products: Product[] = [
   {
-    id: 'ts-01-heavy-graphic',
-    name: 'TS-01 Heavy Graphic Tee',
+    id: 'drop-01-smoke',
+    name: 'Smoke',
+    tagline: 'holding onto smoke and calling it a memory',
     description:
-      'Our lead graphic tee. Black, oversized, drop-shoulder, built on heavy combed cotton with a wash-fast high-density print. Final artwork is in development.',
-    price: 1899,
-    image: '/placeholders/ts-01.svg',
-    category: 'First Drop',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black'],
+      'Two frayed cream canvas patches. Reaching hands in line art, with a red braided cord stitched between the wrists.',
+    images: ['/drop-01/smoke.jpg', '/drop-01/smoke-patch.jpg'],
+    category: 'Drop 01',
     gsm: '~260 GSM combed cotton (target)',
-    decoration: 'High-density graphic print',
-    fit: 'Oversized, drop-shoulder, unisex',
-    status: 'in-development',
+    decoration: 'Frayed canvas patches, line art, red braided cord',
+    fit: 'Black · Oversized, drop-shoulder, unisex',
   },
   {
-    id: 'ts-02-chest-embroidery',
-    name: 'TS-02 Chest Embroidery Tee',
+    id: 'drop-01-panther',
+    name: 'Panther',
+    tagline: 'quiet feet / sharp teeth',
     description:
-      'The quiet one. Black oversized heavy tee with a single small embroidery on the chest. One mark, done properly, on cloth that holds its shape.',
-    price: 1699,
-    image: '/placeholders/ts-02.svg',
-    category: 'First Drop',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black'],
+      'A frayed patch with a walking panther in line art. Raised red embroidered slashes cut across the patch and onto the tee.',
+    images: ['/drop-01/panther.jpg', '/drop-01/panther-patch.jpg'],
+    category: 'Drop 01',
     gsm: '~260 GSM combed cotton (target)',
-    decoration: 'Small chest embroidery',
-    fit: 'Oversized, drop-shoulder, unisex',
-    status: 'in-development',
+    decoration: 'Frayed canvas patch, line art, raised red embroidery',
+    fit: 'Black · Oversized, drop-shoulder, unisex',
   },
   {
-    id: 'ts-03-print-embroidery',
-    name: 'TS-03 Print + Embroidery Tee',
+    id: 'drop-01-david',
+    name: 'David',
+    tagline: 'perfection is a flaw',
     description:
-      'Concept sample. A black oversized heavy tee combining a graphic print with embroidery in one piece. Shown here to share the direction, not as a finished product.',
-    price: 2199,
-    image: '/placeholders/ts-03.svg',
-    category: 'Concept',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    colors: ['Black'],
+      'A frayed patch with a classical bust in line art. A dense raised red embroidered bar sits over the eyes.',
+    images: ['/drop-01/david.jpg', '/drop-01/david-patch.jpg'],
+    category: 'Drop 01',
     gsm: '~260 GSM combed cotton (target)',
-    decoration: 'Graphic print + embroidery',
-    fit: 'Oversized, drop-shoulder, unisex',
-    status: 'concept',
+    decoration: 'Frayed canvas patch, line art, dense red embroidery',
+    fit: 'Black · Oversized, drop-shoulder, unisex',
   },
 ];
 
@@ -60,15 +51,7 @@ export const getProductById = (id: string): Product | undefined => {
   return products.find((p) => p.id === id);
 };
 
-export const getProductsByCategory = (category: string): Product[] => {
-  return products.filter((p) => p.category === category);
-};
-
-/** Format a whole-rupee INR price, e.g. 1899 -> "₹1,899" */
-export const formatINR = (price: number): string => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(price);
-};
+/** Shared honesty lines, used on cards and the product page */
+export const DROP_EDITION = 'Limited edition. 50 numbered pieces per design.';
+export const CONCEPT_IMAGE_CAPTION =
+  'Concept images. Real photos coming with the samples.';
