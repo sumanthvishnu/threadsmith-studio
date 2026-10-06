@@ -9,7 +9,7 @@ interface HeroProps {
 export function Hero({ onShopNow, onAbout }: HeroProps) {
   const features = [
     { icon: Shirt, text: 'Oversized drop-shoulder fit' },
-    { icon: Layers, text: '240 to 300 GSM heavy cotton' },
+    { icon: Layers, text: 'About 260 GSM heavy cotton' },
     { icon: PenTool, text: 'Print and embroidery' },
   ];
 

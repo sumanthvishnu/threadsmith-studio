@@ -11,13 +11,22 @@ interface ProductCardProps {
 /**
  * Browse-only product card. The drop is not open, so there is no price,
  * no cart, and no call to action beyond looking at the design.
+ *
+ * The card is a real anchor so it is keyboard-focusable and works with
+ * assistive tech. Navigation is handled in-app (no router), so the click
+ * default is prevented and routed through onView.
  */
 export function ProductCard({ product, onView }: ProductCardProps) {
   return (
-    <Card
-      className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-      onClick={() => onView(product.id)}
+    <a
+      href={`#${product.id}`}
+      onClick={(event) => {
+        event.preventDefault();
+        onView(product.id);
+      }}
+      className="block rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
     >
+      <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-neutral-950">
         <img
@@ -55,6 +64,7 @@ export function ProductCard({ product, onView }: ProductCardProps) {
 
         <p className="text-xs text-gray-500">{DROP_EDITION}</p>
       </CardContent>
-    </Card>
+      </Card>
+    </a>
   );
 }
